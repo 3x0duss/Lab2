@@ -16,9 +16,9 @@ public class Postfix{
     public static double Calculation(String postfix) {
 
         if (postfix == null) {
-            NullPointerException e;
+
             System.out.println("Неправильный ввод выражения!");
-            return 0;
+            throw new NullPointerException();
         }
         Stack<Double> stack = new Stack<>();
         Scanner scanner = new Scanner(postfix);
@@ -31,10 +31,9 @@ public class Postfix{
                 } else {
 
                     if (stack.peek() == null) {
-                        NullPointerException e;
                         System.out.println("Выражение записано некорректно!");
                         postfix = null;
-                        return 0;
+                        throw new NullPointerException();
                     }
 
                     double y = stack.pop();
@@ -68,7 +67,7 @@ public class Postfix{
                                     stack.push(x / y);
                                 } else {
                                     System.out.println("Деление на ноль!");
-                                    return 0;
+                                    throw new NullPointerException();
                                 }
                                 break;
                             case '=':
@@ -91,10 +90,10 @@ public class Postfix{
 
             } else {
 
-                NullPointerException e;
                 System.out.println("Ошибка ввода выражения!");
+                throw new NullPointerException();
             }
         }
-        return 0;
+        return 0.0;
     }
 }
